@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ex3</title>
+</head>
+<body>
+  <h1 th:text="${result}"></h1>
+  <h1 th:text="${dto}"></h1>
+
+    <!--th:inline 생략 시, 데이터로 인식을 하지 못함.-->
+    <script th:inline="javascript">
+        var msg = [[${result}]];
+        var dto = [[${dto}]];
+        var jsonObj = JSON.parse('\"'+dto+'\"'); // 문자열을 JSON 객체로 변환
+        var jsonStr = JSON.stringify(dto); // JSON 객체를 문자열로 변환
+
+        console.log(msg);
+        console.log(jsonObj);
+        console.log(jsonStr);
+    </script>
+</body>
+</html>

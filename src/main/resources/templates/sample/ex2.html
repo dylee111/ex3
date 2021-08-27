@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ex2</title>
+</head>
+<style>
+    .target {
+        background : yellow;
+        display : inline-block;
+    }
+</style>
+<body>
+    <ul>
+        <!--/* 반복문 처리
+        <li th:each="dto : ${list}">[[${dto}]]</li>
+
+        각 행에 index 속성 부여, index이기 때문에 0부터 시작 (count는 1부터 시작)
+        <li th:each="dto, state : ${list}">[[${state.index}]] --- [[${dto}]]</li>
+
+        <li th:each="dto, tt : ${list}">
+            <span th:if="${dto.sno % 5 == 0}" th:text="${'----' + dto.sno}"></span>
+            <span th:unless="${dto.sno % 5 == 0}" th:text="${dto.first}"></span>
+        </li>
+
+        <li th:each="dto, state : ${list}" th:text="${dto.sno % 5 == 0} ? ${dto.sno} : ${dto.first}"></li>*/-->
+
+        <li th:each="dto, state : ${list}" th:class="${dto.sno % 5 == 0} ? 'target' : ${dto.first}" th:text="${dto}"></li>
+
+
+        <th:block th:each="dto : ${list}">
+            <li th:text="${dto.sno % 5 == 0} ? ${dto.sno} : ${dto.first}"></li>
+        </th:block>
+
+    </ul>
+</body>
+</html>
